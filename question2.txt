@@ -1,0 +1,21 @@
+Save the results of each normalisation step, together with a description of the steps you took in a document with a clear name. 
+Add this document to your git-repository and choose a suiting commit-message.
+
+UNF
+    research_group(personnel number, name, date of birth, lab code, lab name, research code, research description, research supervisor)
+
+1NF - remove repeations
+    research(research code, description, supervisor)
+    research_personnel(personnel number, name, date of birth, lab code, lab name)
+   
+2NF - remove partiial key dependencies
+   research(research code, description, supervisor, lab code, personnel number)
+   research_personnel(personnel number, name, date of birth)
+   research_location(lab code, lab name)
+   
+3NF -remove trans dependencies
+    research(research code, description, supervisor, lab code)
+    research_personnel(personnel number, name, date of birth)
+    research_location(lab code, lab name)
+    research_ref(personnel number, research code)
+    
