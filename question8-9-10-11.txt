@@ -1,0 +1,40 @@
+Note, i'm using compass
+
+q8
+Give the number of medicines taken with a lozenge (TABLET;BUCCAL, SUBLINGUAL). Make sure that your query only shows the name of the drug.
+filter: {method_of_admission: "TABLET;BUCCAL, SUBLINGUAL"}
+project:{_id:0, drug:1}
+
+"DEMULEN 1/35-28"
+
+q9.
+Give the number of medicines that have side effects in more than 8% of cases.
+
+filter: {percentage_of_side_effects: {$gte:8}}
+project: {drug:1, _id:-0}
+
+"LIQUAEMIN SODIUM PRESERVATIVE FREE"
+"GUANIDINE HYDROCHLORIDE"
+"MENADIONE"
+"PROLOID"
+"ORETON METHYL"
+"PITRESSIN TANNATE"
+"DRISDOL"
+"SYNKAYVITE"
+"SULFADIAZINE"
+"SULFADIAZINE SODIUM"
+"STILBESTROL"
+"ALCOHOL 10% AND DEXTROSE 5%"
+"DEMEROL"
+"PANHEPRIN"
+"HEPARIN LOCK FLUSH"
+"HEPARIN SODIUM PRESERVATIVE FREE"
+"ESTINYL"
+"DESOXYN"
+"AMINOHIPPURATE SODIUM"
+"KAPPADIONE"
+
+q10
+Give the names of the companies that produce medicines that on average  cause side effects in more than 10% of cases? 
+Sort your results according to decreasing percentage of side effects.
+
