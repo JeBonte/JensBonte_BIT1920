@@ -30,8 +30,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Mutation` (
   `ID` INT NOT NULL COMMENT ' ',
   `Gene_name` VARCHAR(45) NULL,
-  `Start` INT NULL,
-  `END` INT NULL,
+  `Start` FLOAT NULL,
+  `END` FLOAT NULL,
   `chromosome` FLOAT NULL,
   PRIMARY KEY (`ID`),
   INDEX `gene_idx` (`Gene_name` ASC) VISIBLE,
