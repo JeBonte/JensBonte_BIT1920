@@ -1,0 +1,88 @@
+question 4:
+
+    Give the name and length of the third largest gene in the genome.
+    
+    querry:
+
+        SELECT gene_name, (seq_region_end-seq_region_start) AS length
+        FROM gene
+        ORDER BY length DESC
+        LIMIT 2,1;
+    
+    Answer: 
+        # gene_name, length
+        PARP1, 2493039
+
+
+question 5:
+
+        Give the name of the gene with the most exons? Give the number of exons of this gene?
+
+     querry:
+
+        SELECT COUNT(g.gene_name), g.gene_name
+        FROM gene g
+        JOIN transcript t ON t.gene_id=g.gene_id
+        JOIN exon_transcript et ON et.transcript_id=t.transcript_id
+        JOIN exon e on e.exon_id=et.exon_id
+        GROUP BY g.gene_name
+        ORDER BY COUNT(g.gene_name) DESC
+        LIMIT 1;
+    
+    Answer: 
+        '# amount of exons, gene_name
+        3598, COL11A2
+
+question 6:
+
+    Give the name of the chromosome with the most genes associated with breast cancer. 
+    Give the number of transcripts of this chromosome? (2 queries)
+    
+    querry:
+
+        SELECT count(*) as "amount of genes", chromosome
+        FROM gene
+        WHERE description REGEXP ('breast') AND description REGEXP ('cancer|carcinoma')
+        GROUP BY chromosome
+        ORDER BY count(*) DESC
+        LIMIT 1;
+
+        SELECT count(t.transcript_id) AS "amount of transcripts"
+        FROM gene g
+        JOIN transcript t ON t.gene_id=g.gene_id
+        WHERE g.chromosome REGEXP('^1$');
+        
+    Answer: 
+
+        # amount of genes, chromosome
+        3, 1
+
+        # amount of transcripts
+        17641
+        
+question 7:
+
+    Give the number of rows from the exon table and do the same for the exon_transcript table (2 queries). 
+    Explain why there is a difference in number of rows.
+    
+    querry:
+
+        SELECT count(exon_id) AS "amount of exons"
+        FROM exon;
+
+        SELECT count(exon_id) AS "count exons in transcript"
+        FROM exon_transcript;
+
+    Answer: 
+       # amount of exons
+        642590
+
+        # count exons in transcript
+        1178393
+
+        Exon is the coding regon, transcript exon are the translations, there are more different transcripts because of atlernative splicing
+
+
+
+
+       
