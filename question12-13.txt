@@ -1,0 +1,8 @@
+Give the mapping location of the variant rs499899635 in the zebrafish?
+
+curl 'https://rest.ensembl.org/map/cdna/ENST00000288602/100..300?' -H 'Content-type:application/json'
+
+
+Give the first 100 bases of the genomic FASTA sequence of the Notch1 gene in the mouse.
+
+curl 'https://rest.ensembl.org/sequence/region/mouse/10:10138412:..10138512:1?' -H 'Content-type:text/plain'
